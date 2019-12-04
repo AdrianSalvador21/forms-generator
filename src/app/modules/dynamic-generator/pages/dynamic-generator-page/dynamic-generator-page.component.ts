@@ -9,6 +9,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
 export class DynamicGeneratorPageComponent implements OnInit {
   @ViewChildren('controlView') controlViews;
   activeElements = [];
+  activateReorder = true;
   config: any[] = [];
   elements = [
     'Button',
@@ -58,6 +59,14 @@ export class DynamicGeneratorPageComponent implements OnInit {
     setTimeout(() => {
       this.showPreview = true;
     }, 100);
+  }
+
+  reorderActive() {
+    this.activateReorder = false;
+  }
+
+  completeReorder() {
+    this.activateReorder = true;
   }
 
 }

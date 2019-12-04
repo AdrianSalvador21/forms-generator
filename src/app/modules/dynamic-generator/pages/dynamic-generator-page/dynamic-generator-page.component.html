@@ -1,6 +1,7 @@
 <div class="select-container">
   <div cdkDropList class="items-container">
     <div cdkDropList
+         [cdkDropListSortingDisabled]="true"
          #elementsList="cdkDropList"
          [cdkDropListData]="elements"
          [cdkDropListConnectedTo]="[selectedElementsList]"
@@ -12,18 +13,30 @@
     </div>
   </div>
 
+
+  <div class="actions-buttons-content" style="display: flex; justify-content: flex-end;">
+    <button (click)="reorderActive()" *ngIf="activateReorder" [disabled]="activeElements.length <= 1" mat-icon-button aria-label="icon-reorder" style="width: 38px; height: 38px;">
+      <mat-icon>reorder</mat-icon>
+    </button>
+
+    <button (click)="completeReorder()" *ngIf="!activateReorder" [disabled]="activeElements.length <= 1" mat-icon-button aria-label="icon-reorder" style="width: 38px; height: 38px;">
+      <mat-icon>done</mat-icon>
+    </button>
+  </div>
+
+
   <div class="selectedItems-container">
     <div cdkDropList
          #selectedElementsList="cdkDropList"
          [cdkDropListData]="activeElements"
          [cdkDropListConnectedTo]="[elementsList]"
-         class="example-list"
+         class="example-list" [ngClass]="{'animated shake': !activateReorder}"
          (cdkDropListDropped)="drop($event)">
       <div class="drop-text-container" *ngIf="activeElements.length === 0">
         <span>Drop your elements</span>
       </div>
 
-      <div class="itemSelected-box" [ngClass]="{'border-b': activeElements.length - 1 !== i}" *ngFor="let item of activeElements; let i = index" cdkDrag>
+      <div class="itemSelected-box" [ngClass]="{'border-b': activeElements.length - 1 !== i}" *ngFor="let item of activeElements; let i = index" cdkDrag [cdkDragDisabled]="activateReorder">
         <!--ng if-->
         <mat-accordion style="width: 100% !important">
           <mat-expansion-panel>
