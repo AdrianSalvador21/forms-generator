@@ -1,0 +1,35 @@
+<form [formGroup]="globalDateForm">
+  <div fxLayout="row">
+    <div fxFlex="100" fxFlex.gt-sm="100">
+      <mat-form-field class="dateType-select-container">
+        <mat-select placeholder="Date type" formControlName="dateType">
+          <mat-option *ngFor="let type of dateTypes" [value]="type">
+            {{type}}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div fxLayout="row">
+    <div fxFlex="100" fxFlex.gt-sm="100">
+      <mat-radio-group formControlName="period">
+        <mat-radio-button value="unique">Unique date</mat-radio-button>
+        <mat-radio-button value="period">Period date</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+</form>
+
+<div fxLayout="row">
+  <div class="date-config-container" fxFlex="100" fxFlex.gt-sm="100">
+    <div *ngIf="globalForm.period.value == 'unique'">
+      <!-- <two-unique-date></two-unique-date> -->
+    </div>
+    <div *ngIf="globalForm.period.value == 'period'">
+      <!-- <two-period-date></two-period-date> -->
+    </div>
+  </div>
+</div>
+
+

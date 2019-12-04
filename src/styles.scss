@@ -1,1 +1,37 @@
 /* You can add global styles to this file, and also import other style files */
+
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.input-form-field {
+  width: 100%;
+}
+
+.ft-11 {
+  font-size: 11px !important;
+}
+
+
+.icon-bt {
+  .mat-expansion-indicator::after {
+    border-style: solid;
+    border-width: 0 2px 2px 0;
+    content: '';
+    display: none;
+    padding: 3px !important;
+    transform: rotate(45deg);
+    vertical-align: middle;
+  }
+}
+
+.itemSelected-box {
+  .mat-content {
+    justify-content: space-between;
+    flex-direction: row-reverse;
+  }
+
+  .mat-expansion-panel-header-title {
+    display: flex;
+    justify-content: flex-end;
+  }
+}

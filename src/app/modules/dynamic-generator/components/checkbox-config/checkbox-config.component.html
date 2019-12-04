@@ -1,0 +1,41 @@
+<div fxFlex="100" fxFlex.gt-sm="100">
+  <div class="element-options">
+    <form class="login-form" [formGroup]="checkForm">
+      <div fxLayout="row">
+        <div fxFlex="100" fxFlex.gt-sm="100">
+          <!--Label control-->
+          <mat-form-field class="input-form-field">
+            <input autocomplete="off"
+                   matInput
+                   name="label"
+                   type="text"
+                   placeholder= "Label"
+                   formControlName="label" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div fxFlex="100" fxFlex.gt-sm="100">
+          <!--Name control-->
+          <mat-form-field class="input-form-field">
+            <input autocomplete="off"
+                   matInput name="name"
+                   type="text"
+                   placeholder="Name"
+                   formControlName="name" required>
+          </mat-form-field>
+        </div>
+      </div>
+      <div fxLayout="row">
+        <div fxFlex="100" fxFlex.gt-sm="100">
+          <!--InputType control-->
+            <mat-label class="default-option-label">Default</mat-label>
+            <mat-radio-group class="input-form-field" formControlName="value">
+              <mat-radio-button [value]="true">True</mat-radio-button>
+              <mat-radio-button [value]="false">False</mat-radio-button>
+            </mat-radio-group>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>

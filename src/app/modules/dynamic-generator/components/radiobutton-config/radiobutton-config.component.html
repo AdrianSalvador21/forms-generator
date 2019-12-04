@@ -1,0 +1,63 @@
+<div fxLayout="row">
+  <div fxFlex="100" fxFlex.gt-sm="100">
+    <div class="element-options">
+      <form class="login-form" [formGroup]="radioForm">
+        <div fxLayout="row">
+          <div fxFlex="100" fxFlex.gt-sm="100">
+            <!--Label control-->
+            <mat-form-field class="input-form-field">
+              <input autocomplete="off"
+                     matInput
+                     name="label"
+                     type="text"
+                     placeholder= "Label"
+                     formControlName="label" required>
+            </mat-form-field>
+          </div>
+        </div>
+        <div fxLayout="row">
+          <div fxFlex="100" fxFlex.gt-sm="100">
+            <!--Name control-->
+            <mat-form-field class="input-form-field">
+              <input autocomplete="off"
+                     matInput name="name"
+                     type="text"
+                     placeholder="Name"
+                     formControlName="name" required>
+            </mat-form-field>
+          </div>
+        </div>
+      </form>
+      <div class="options-container">
+        <mat-label>Options</mat-label>
+        <div cdkDropList class="example-list" (cdkDropListDropped)="drop($event)">
+          <div class="example-box" *ngFor="let option of options; let i = index" cdkDrag>
+            <div fxLayout="row">
+              <div fxFlex="10" class="select-radio-container">
+                <mat-radio-button (change)="setDefaultValue(option)"></mat-radio-button>
+              </div>
+              <div fxFlex="35" class="select-input-container">
+                <mat-form-field style="width: 100%">
+                  <input [(ngModel)]="option.placeholder" class="select-input" matInput placeholder="Option">
+                </mat-form-field>
+              </div>
+              <div fxFlex="35" class="select-input-container">
+                <mat-form-field style="width: 100%">
+                  <input [(ngModel)]="option.value" class="select-input" matInput placeholder="Value">
+                </mat-form-field>
+              </div>
+              <div fxFlex="10" class="select-delete-container">
+                <mat-icon *ngIf="i !== 0" class="delete-option-icon" (click)="deleteOption(i)">close</mat-icon>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="options-container"></div>
+        <button (click)="addOption()" class="add-button" mat-button color="primary">Add</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+

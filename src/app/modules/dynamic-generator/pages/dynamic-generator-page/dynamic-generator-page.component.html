@@ -1,0 +1,78 @@
+<div class="select-container">
+  <div cdkDropList class="items-container">
+    <div cdkDropList
+         #elementsList="cdkDropList"
+         [cdkDropListData]="elements"
+         [cdkDropListConnectedTo]="[selectedElementsList]"
+         class="items-list"
+         (cdkDropListDropped)="drop($event)">
+      <div class="item-box" *ngFor="let element of elements" cdkDrag>
+        {{element}}
+      </div>
+    </div>
+  </div>
+
+  <div class="selectedItems-container">
+    <div cdkDropList
+         #selectedElementsList="cdkDropList"
+         [cdkDropListData]="activeElements"
+         [cdkDropListConnectedTo]="[elementsList]"
+         class="example-list"
+         (cdkDropListDropped)="drop($event)">
+      <div class="drop-text-container" *ngIf="activeElements.length === 0">
+        <span>Drop your elements</span>
+      </div>
+
+      <div class="itemSelected-box" [ngClass]="{'border-b': activeElements.length - 1 !== i}" *ngFor="let item of activeElements; let i = index" cdkDrag>
+        <!--ng if-->
+        <mat-accordion style="width: 100% !important">
+          <mat-expansion-panel>
+            <!--------HEADER-------------->
+            <mat-expansion-panel-header class="prevent-click icon-bt">
+              <mat-panel-description>
+                <span class="element-title">{{item}}</span>
+              </mat-panel-description>
+              <mat-panel-title style="float: right">
+                <mat-icon class="prevent-click-active" style="float: right; margin-right: 5px;">edit</mat-icon>
+                <mat-icon class="prevent-click-active" (click)="deleteElement(i)" style="float: right;">restore_from_trash</mat-icon>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <!---------CONTENT------------>
+
+            <div class="prevent-click-active">
+              <div *ngIf="item === 'Button'">
+                <app-button-config #controlView></app-button-config>
+              </div>
+              <div *ngIf="item === 'Input'">
+                <app-input-config #controlView></app-input-config>
+              </div>
+              <div *ngIf="item === 'Checkbox'">
+                <app-checkbox-config #controlView></app-checkbox-config>
+              </div>
+              <div *ngIf="item === 'Select'">
+                <app-select-config #controlView></app-select-config>
+              </div>
+              <div *ngIf="item === 'Date'">
+                <app-date-config #controlView></app-date-config>
+              </div>
+              <div *ngIf="item === 'Radiobutton'">
+                <app-radiobutton-config #controlView></app-radiobutton-config>
+              </div>
+            </div>
+          </mat-expansion-panel>
+        </mat-accordion>
+      </div>
+    </div>
+
+    <div class="actions-buttons-content">
+      <button [disabled]="activeElements.length == 0" (click)="save()" class="action-button ft-11" mat-flat-button color="primary">Save</button>
+      <button [disabled]="activeElements.length == 0" class="action-button ft-11" mat-flat-button color="primary">Preview</button>
+    </div>
+  </div>
+</div>
+
+
+<div *ngIf="showPreview">
+  <app-dynamic-form [fields]="config">
+  </app-dynamic-form>
+</div>
