@@ -5,7 +5,7 @@ import {FieldConfig} from '../../classes/field.interface';
 @Component({
   selector: 'app-button',
   template: `
-    <div class='demo-full-width margin-top' [formGroup]='group'>
+    <div class='demo-full-width margin-top' [formGroup]='group' style="width: 100% !important;">
       <button type='submit' mat-raised-button color='primary'>{{field.label}}</button>
     </div>
   `,

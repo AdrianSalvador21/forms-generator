@@ -7,9 +7,11 @@ import {FieldConfig} from '../../classes/field.interface';
   selector: 'app-dynamic-form',
   template: `
     <div style="width: 100%; display: flex; justify-content: center; align-items: center;">
-        <form class="dynamic-form" style="width: 70% !important;" [formGroup]="form" (submit)="onSubmit($event)">
-            <ng-container *ngFor="let field of fields;" dynamicField [field]="field" [group]="form">
-            </ng-container>
+        <form class="dynamic-form row" style="width: 100% !important;" [formGroup]="form" (submit)="onSubmit($event)">
+            <div class="col-12 col-md-6" *ngFor="let field of fields;">
+                <ng-container dynamicField [field]="field" [group]="form">
+                </ng-container>
+            </div>
         </form>
     </div>
   `,
@@ -32,6 +34,7 @@ export class DynamicFormComponent implements OnInit {
 
   ngOnInit() {
     this.form = this.createControl();
+    console.log(this.form);
   }
 
   onSubmit(event: Event) {
@@ -48,6 +51,8 @@ export class DynamicFormComponent implements OnInit {
     const group = this.fb.group({});
     this.fields.forEach(field => {
       if (field.type === 'button') return;
+      console.log(field);
+      console.log(this.bindValidations(field.validations));
       const control = this.fb.control(
         field.value,
         this.bindValidations(field.validations || [])
@@ -58,6 +63,7 @@ export class DynamicFormComponent implements OnInit {
   }
 
   bindValidations(validations: any) {
+    console.log(validations);
     if (validations.length > 0) {
       const validList = [];
       validations.forEach(valid => {

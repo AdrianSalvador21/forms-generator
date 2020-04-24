@@ -2,9 +2,8 @@
   <div fxFlex="100" fxFlex.gt-sm="100">
     <div class="element-options">
       <form class="login-form" [formGroup]="inputForm">
-        <div fxLayout="row">
-          <div fxFlex="100" fxFlex.gt-sm="100">
-            <!--Label control-->
+        <div class="row">
+          <div class="col-12 col-md-6">
             <mat-form-field class="input-form-field" style="width: 100% !important;">
               <input autocomplete="off"
                      matInput
@@ -14,10 +13,8 @@
                      formControlName="label" required>
             </mat-form-field>
           </div>
-        </div>
-        <div fxLayout="row">
-          <div fxFlex="100" fxFlex.gt-sm="100">
-            <!--Name control-->
+
+          <div class="col-12 col-md-6">
             <mat-form-field class="input-form-field">
               <input autocomplete="off"
                      matInput name="name"
@@ -47,37 +44,49 @@
           <!--Validators control-->
           <form [formGroup]="validationsForm">
             <section class="example-radio-group">
-              <label class="example-radio-group">Validators</label>
+              <label class="example-radio-group vl-title">Validators</label>
 
-              <div fxLayout="row">
-                <div fxFlex="50" fxFlex.gt-sm="50" class="example-radio-group">
+              <div class="row">
+                <div class="col-12 col-md-6">
                   <mat-checkbox (change)="activeInput('maxLengthValue', $event)" formControlName="maxLength" class="example-margin">
                     Max Length
                   </mat-checkbox>
+                </div>
+                <div class="col-12 col-md-6">
                   <mat-form-field class="input-control">
                     <input formControlName="maxLengthValue" matInput placeholder="">
                   </mat-form-field>
+                </div>
+
+                <div class="col-12 col-md-6">
                   <mat-checkbox (change)="activeInput('patternValue', $event)" formControlName="pattern" class="example-margin">
                     Pattern
                   </mat-checkbox>
+                </div>
+                <div class="col-12 col-md-6">
                   <mat-form-field class="input-control">
                     <input formControlName="patternValue" matInput placeholder="">
                   </mat-form-field>
                 </div>
-
-                <div fxFlex="50" fxFlex.gt-sm="50" class="example-radio-group" style="padding-left: 50px">
+              </div>
+              <div class="row">
+                <div class="col-12 col-md-6">
                   <mat-checkbox (change)="activeInput('minLengthValue', $event)" formControlName="minLength" class="example-margin">
                     Min Length
                   </mat-checkbox>
+                </div>
+                <div class="col-12 col-md-6">
                   <mat-form-field class="input-control">
                     <input formControlName="minLengthValue" matInput placeholder="">
                   </mat-form-field>
+                </div>
+
+                <div class="col-12 col-md-6">
                   <mat-checkbox formControlName="required" class="example-margin">
                     Required
                   </mat-checkbox>
                 </div>
               </div>
-
             </section>
           </form>
         </div>
