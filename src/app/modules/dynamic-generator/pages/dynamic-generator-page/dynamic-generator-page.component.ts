@@ -1,5 +1,7 @@
 import {Component, OnInit, ViewChildren} from '@angular/core';
 import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
+import {FormPreviewDialogComponent} from '../../dialogs/form-preview-dialog.component';
+import {MatDialog, MatDialogRef} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dynamic-generator-page',
@@ -7,6 +9,7 @@ import {CdkDragDrop, moveItemInArray, transferArrayItem} from '@angular/cdk/drag
   styleUrls: ['./dynamic-generator-page.component.scss']
 })
 export class DynamicGeneratorPageComponent implements OnInit {
+  private nonDialog: MatDialogRef<FormPreviewDialogComponent, any>;
   @ViewChildren('controlView') controlViews;
   activeElements = [];
   activateReorder = true;
@@ -16,11 +19,12 @@ export class DynamicGeneratorPageComponent implements OnInit {
     'Checkbox',
     'Input',
     'Radiobutton',
-    'Select'
+    'Select',
+    'Date'
   ];
   showPreview = false;
 
-  constructor() { }
+  constructor(public dialog: MatDialog) { }
 
   ngOnInit() {
   }
@@ -58,6 +62,17 @@ export class DynamicGeneratorPageComponent implements OnInit {
     }
     setTimeout(() => {
       this.showPreview = true;
+      const minWidth = '300px';
+      const maxWidth = '650px';
+      const minHeight = '460px';
+      this.nonDialog = this.dialog.open(FormPreviewDialogComponent, {
+        width: '95vw',
+        minWidth,
+        maxWidth,
+        minHeight,
+        autoFocus: false,
+        data: this.config,
+      });
     }, 100);
   }
 

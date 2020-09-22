@@ -1,7 +1,30 @@
 <form [formGroup]="globalDateForm">
-  <div fxLayout="row">
-    <div fxFlex="100" fxFlex.gt-sm="100">
-      <mat-form-field class="dateType-select-container">
+  <div class="row">
+    <div class="col-12 col-md-6">
+      <mat-form-field class="input-form-field" style="width: 100% !important;">
+        <input autocomplete="off"
+               matInput
+               name="label"
+               type="text"
+               placeholder= "Label"
+               formControlName="label" required>
+      </mat-form-field>
+    </div>
+
+    <div class="col-12 col-md-6">
+      <mat-form-field class="input-form-field">
+        <input autocomplete="off"
+               matInput name="name"
+               type="text"
+               placeholder="Name"
+               formControlName="name" required>
+      </mat-form-field>
+    </div>
+  </div>
+
+  <div class="row mt-10">
+    <div class="col-12 col-md-6">
+      <mat-form-field class="dateType-select-container w-100">
         <mat-select placeholder="Date type" formControlName="dateType">
           <mat-option *ngFor="let type of dateTypes" [value]="type">
             {{type}}
@@ -9,16 +32,15 @@
         </mat-select>
       </mat-form-field>
     </div>
-  </div>
 
-  <div fxLayout="row">
-    <div fxFlex="100" fxFlex.gt-sm="100">
+    <!-- <div class="col-12 col-md-6">
       <mat-radio-group formControlName="period">
         <mat-radio-button value="unique">Unique date</mat-radio-button>
         <mat-radio-button value="period">Period date</mat-radio-button>
       </mat-radio-group>
-    </div>
+    </div> -->
   </div>
+
 </form>
 
 <div fxLayout="row">

@@ -71,7 +71,7 @@ export class InputConfigComponent extends FormControlBaseComponent implements On
             validators.push({
               name: 'required',
               validator: Validators.required,
-              message: 'Name Required'
+              message: 'Input required'
             });
           }
           break;
@@ -79,8 +79,8 @@ export class InputConfigComponent extends FormControlBaseComponent implements On
           if (this.vForm[key].value) {
             validators.push({
               name: 'maxLength',
-              validator: Validators.maxLength(parseInt(this.vForm.maxLengthValue.value, 2 )),
-              message: 'Max Length'
+              validator: Validators.maxLength(parseInt(this.vForm.maxLengthValue.value, 10 )),
+              message: 'Invalid max length'
             });
           }
           break;
@@ -88,8 +88,8 @@ export class InputConfigComponent extends FormControlBaseComponent implements On
           if (this.vForm[key].value) {
             validators.push({
               name: 'minLength',
-              validator: Validators.minLength(parseInt(this.vForm.minLengthValue.value, 2 )),
-              message: 'Max Length'
+              validator: Validators.minLength(parseInt(this.vForm.minLengthValue.value, 10 )),
+              message: 'Invalid max length'
             });
           }
           break;
@@ -98,7 +98,7 @@ export class InputConfigComponent extends FormControlBaseComponent implements On
             validators.push({
               name: 'pattern',
               validator: Validators.pattern(this.vForm.patternValue.value),
-              message: 'Pattern'
+              message: 'Invalid pattern'
             });
           }
           break;

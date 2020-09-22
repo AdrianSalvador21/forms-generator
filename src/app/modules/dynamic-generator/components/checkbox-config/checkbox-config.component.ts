@@ -23,7 +23,6 @@ export class CheckboxConfigComponent extends FormControlBaseComponent implements
   }
 
   save(): FieldConfig {
-    console.log(this.checkForm.getRawValue());
     return {
       type: 'checkbox',
       ...this.checkForm.getRawValue()

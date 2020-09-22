@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, Validators} from '@angular/forms';
+import {FieldConfig} from '../../classes/field.interface';
 
 @Component({
   selector: 'app-date-config',
@@ -10,18 +11,32 @@ export class DateConfigComponent implements OnInit {
 
   globalDateForm = this.fb.group({
     dateType: ['date'],
-    period: ['unique']
+    period: ['unique'],
+    label: ['', Validators.required],
+    name: ['']
   });
+
+  dateTypes = ['date', 'time', 'dateTime'];
 
   get globalForm() {
     return this.globalDateForm.controls;
   }
 
-  dateTypes = ['date', 'time', 'dateTime'];
 
   constructor(public fb: FormBuilder) { }
 
   ngOnInit() {
+  }
+
+  save(): FieldConfig {
+    const fieldConfig = {
+      type: 'date',
+      inputType: this.globalForm.dateType.value,
+      name: this.globalForm.name.value,
+      label: this.globalForm.label.value,
+    };
+
+    return fieldConfig;
   }
 
 }

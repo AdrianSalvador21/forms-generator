@@ -9,6 +9,7 @@
          (cdkDropListDropped)="drop($event)">
       <div class="item-box" *ngFor="let element of elements" cdkDrag>
         {{element}}
+        <mat-icon style="color: #595959 !important;">drag_indicator</mat-icon>
       </div>
     </div>
   </div>
@@ -50,7 +51,7 @@
             </mat-expansion-panel-header>
             <!---------CONTENT------------>
 
-            <div class="prevent-click-active">
+            <div class="prevent-click-active" style="padding: 12px 44px 29px; !important;">
               <div *ngIf="item === 'Button'">
                 <app-button-config #controlView></app-button-config>
               </div>
@@ -63,11 +64,11 @@
               <div *ngIf="item === 'Select'">
                 <app-select-config #controlView></app-select-config>
               </div>
-              <div *ngIf="item === 'Date'">
-                <app-date-config #controlView></app-date-config>
-              </div>
               <div *ngIf="item === 'Radiobutton'">
                 <app-radiobutton-config #controlView></app-radiobutton-config>
+              </div>
+              <div *ngIf="item === 'Date'">
+                <app-date-config #controlView></app-date-config>
               </div>
             </div>
           </mat-expansion-panel>
@@ -83,7 +84,9 @@
 </div>
 
 
-<div *ngIf="showPreview" class="select-container">
-  <app-dynamic-form [fields]="config">
-  </app-dynamic-form>
-</div>
+<!-- <div *ngIf="showPreview" class="row container">
+  <div class="col-12 col-md-6">
+    <app-dynamic-form [fields]="config">
+    </app-dynamic-form>
+  </div>
+</div> -->

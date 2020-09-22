@@ -29,12 +29,10 @@ export class DynamicFormComponent implements OnInit {
   }
 
   constructor(protected fb: FormBuilder) {
-    console.log('error here');
   }
 
   ngOnInit() {
     this.form = this.createControl();
-    console.log(this.form);
   }
 
   onSubmit(event: Event) {
@@ -51,8 +49,6 @@ export class DynamicFormComponent implements OnInit {
     const group = this.fb.group({});
     this.fields.forEach(field => {
       if (field.type === 'button') return;
-      console.log(field);
-      console.log(this.bindValidations(field.validations));
       const control = this.fb.control(
         field.value,
         this.bindValidations(field.validations || [])
@@ -63,8 +59,7 @@ export class DynamicFormComponent implements OnInit {
   }
 
   bindValidations(validations: any) {
-    console.log(validations);
-    if (validations.length > 0) {
+    if (!!validations && validations.length > 0) {
       const validList = [];
       validations.forEach(valid => {
         validList.push(valid.validator);

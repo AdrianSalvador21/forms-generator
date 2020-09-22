@@ -18,6 +18,13 @@ import {DateComponent} from './components/date/date.component';
 import {RadiobuttonComponent} from './components/radiobutton/radiobutton.component';
 import {CheckboxComponent} from './components/checkbox/checkbox.component';
 
+import {MatNativeDateModule} from '@angular/material';
+import { MatMomentDateModule } from '@angular/material-moment-adapter';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatButtonModule} from '@angular/material/button';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import {FormPreviewDialogComponent} from "./dialogs/form-preview-dialog.component";
+
 @NgModule({
   declarations: [
     InputComponent,
@@ -34,13 +41,18 @@ import {CheckboxComponent} from './components/checkbox/checkbox.component';
     CheckboxConfigComponent,
     SelectConfigComponent,
     DateConfigComponent,
-    RadiobuttonConfigComponent
+    RadiobuttonConfigComponent,
+    FormPreviewDialogComponent
   ],
   imports: [
     FormsModule,
     ReactiveFormsModule,
     DynamicGeneratorRoutingModule,
-    SharedModule
+    SharedModule,
+    MatDatepickerModule,
+    MatButtonModule,
+    MatFormFieldModule,
+    MatNativeDateModule, MatMomentDateModule,
   ],
   providers: [],
   entryComponents: [
@@ -50,7 +62,8 @@ import {CheckboxComponent} from './components/checkbox/checkbox.component';
     SelectComponent,
     DateComponent,
     RadiobuttonComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    FormPreviewDialogComponent
   ],
   exports: [
     ButtonConfigComponent,
@@ -66,7 +79,8 @@ import {CheckboxComponent} from './components/checkbox/checkbox.component';
     SelectComponent,
     DateComponent,
     RadiobuttonComponent,
-    CheckboxComponent
+    CheckboxComponent,
+    FormPreviewDialogComponent
   ]
 })
 export class DynamicGeneratorModule {
