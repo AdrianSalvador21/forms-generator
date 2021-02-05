@@ -17,5 +17,7 @@ export class FormPreviewDialogComponent implements OnInit {
 
   ngOnInit() {
     this.formData = this.data;
+    console.log(this.formData);
+    console.log(JSON.stringify(this.formData));
   }
 }
